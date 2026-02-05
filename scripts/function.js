@@ -1,5 +1,3 @@
-const { jsx } = require("react/jsx-runtime");
-
 const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 const seatIds = [];
 const TICKET_PRICE = 550;
@@ -71,7 +69,6 @@ function hideCopuponBox() {
   hideElementById("apply-btn-copupon");
   showElementById("discount-price");
 }
-
 document.getElementById("btn-apply").addEventListener("click", function () {
   const couponInput = document.getElementById("input-copupon").value;
   const currentTotal = selectedSeatsCount * TICKET_PRICE;
