@@ -90,3 +90,13 @@ document.getElementById("btn-apply").addEventListener("click", function () {
   setTextElementValueById("grand-total", currentTotal - discount);
   hideCopuponBox();
 });
+
+// Form Validation & Next Screen
+document.getElementById("phone-number").addEventListener("input", function (e) {
+  const btnNext = document.getElementById("btn-enabled");
+  if (e.target.value.length > 0 && selectedSeatsCount > 0) {
+    btnNext.removeAttribute("disabled");
+  } else {
+    btnNext.setAttribute("disabled", true);
+  }
+});
