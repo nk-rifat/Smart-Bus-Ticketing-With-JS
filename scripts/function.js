@@ -1,3 +1,5 @@
+const { jsx } = require("react/jsx-runtime");
+
 const rows = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J"];
 const seatIds = [];
 const TICKET_PRICE = 550;
@@ -14,12 +16,13 @@ rows.forEach((row) => {
   for (let i = 1; i <= 4; i++) {
     const id = row + i;
     seatIds.push(id);
-    const seatHTML = `<div id="${id}" class="seat bg-[#F7F8F8] rounded-xl px-10 py-4 text-center cursor-pointer hover:bg-gray-200 transition-all font-medium">${id}</div>`;
+    const seatHTML = `<div id="${id}" class="seat bg-[#F7F8F8] rounded-xl px-10 py-4 text-center cursor-pointer transition-all font-medium">${id}</div>`;
     if (i <= 2) leftSide.innerHTML += seatHTML;
     else rightSide.innerHTML += seatHTML;
   }
 });
 
+//  Handle Selection
 document.addEventListener("click", function (event) {
   const clickedElement = event.target.closest(".seat");
   if (!clickedElement) return;
@@ -60,4 +63,30 @@ document.addEventListener("click", function (event) {
       document.getElementById("input-copupon").removeAttribute("disabled");
     }
   }
+});
+
+// Coupon Logic
+
+function hideCopuponBox() {
+  hideElementById("apply-btn-copupon");
+  showElementById("discount-price");
+}
+
+document.getElementById("btn-apply").addEventListener("click", function () {
+  const couponInput = document.getElementById("input-copupon").value;
+  const currentTotal = selectedSeatsCount * TICKET_PRICE;
+  let discount = 0;
+
+  if (couponInput === "NEW15") {
+    discount = (currentTotal * 15) / 100;
+  } else if (couponInput === "Couple 20") {
+    discount = (currentTotal * 20) / 100;
+  } else {
+    alert("Invalid Coupon");
+    return;
+  }
+
+  setTextElementValueById("discount", discount);
+  setTextElementValueById("grand-total", currentTotal - discount);
+  hideCopuponBox();
 });
