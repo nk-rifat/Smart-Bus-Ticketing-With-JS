@@ -5,12 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>smart bus ticketing with js</title>
     <!-- Daisy Ui -->
-    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.22/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- External Css -->
-    <link rel="stylesheet" href="styles/style.css">
+    <link rel="stylesheet" href="styles/style.css" />
   </head>
   <body>
-    <h1 class="text-red-400">Hello world</h1>
+    <!-- Header Part -->
+    <header id="header-section" class="mt-14 mx-[135px]">
+      <!-- Navbar  Part -->
+      <nav class="flex justify-between items-center bg-white">
+        <div>
+          <p class="font-raleway text-[#1DD100] text-4xl font-extrabold">
+            P-Ticket
+          </p>
+        </div>
+        <div>
+          <ul class="flex justify-around gap-14">
+            <li class="font-raleway text-xl font-medium">Home</li>
+            <li class="font-raleway text-xl font-medium">About</li>
+            <li class="font-raleway text-xl font-medium">Destination</li>
+            <li class="font-raleway text-xl font-medium">Search</li>
+          </ul>
+        </div>
+        <div
+          class="flex justify-between items-center bg-green-100 px-[30px] py-4 gap-[10px] rounded-xl border border-green-400"
+        >
+          <span class="font-raleway text-xl font-bold text-[#1DD100]">Bus</span
+          ><img src="images/bus-icon.png" alt="" />
+        </div>
+      </nav>
+    </header>
   </body>
-</html> 
+</html>
