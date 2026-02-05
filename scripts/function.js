@@ -46,5 +46,12 @@ document.addEventListener("click", function (event) {
     const currentTotal = selectedSeatsCount * TICKET_PRICE;
     setTextElementValueById("total-price", currentTotal);
     setTextElementValueById("grand-total", currentTotal);
+
+    // Append to Sidebar
+    const container = document.getElementById("seat-details-container");
+    const div = document.createElement("div");
+    div.className = "flex justify-between text-gray-600";
+    div.innerHTML = `<p>${elementId}</p><p>Economy</p><p>${TICKET_PRICE}</p>`;
+    container.appendChild(div);
   }
 });
