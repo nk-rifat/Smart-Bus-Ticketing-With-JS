@@ -53,5 +53,11 @@ document.addEventListener("click", function (event) {
     div.className = "flex justify-between text-gray-600";
     div.innerHTML = `<p>${elementId}</p><p>Economy</p><p>${TICKET_PRICE}</p>`;
     container.appendChild(div);
+
+    // Enable Coupon Box
+    if (selectedSeatsCount === MAX_SEATS) {
+      document.getElementById("btn-apply").removeAttribute("disabled");
+      document.getElementById("input-copupon").removeAttribute("disabled");
+    }
   }
 });
