@@ -41,5 +41,10 @@ document.addEventListener("click", function (event) {
     const available = getTextElementValueById("total-seat");
     setTextElementValueById("total-seat", available - 1);
     setTextElementValueById("total-select", selectedSeatsCount);
+
+    // Update Pricing
+    const currentTotal = selectedSeatsCount * TICKET_PRICE;
+    setTextElementValueById("total-price", currentTotal);
+    setTextElementValueById("grand-total", currentTotal);
   }
 });
