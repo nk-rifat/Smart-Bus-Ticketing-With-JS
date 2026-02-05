@@ -31,5 +31,10 @@ document.addEventListener("click", function (event) {
       alert("Maximum 4 seats allowed");
       return;
     }
+
+    // Add to Selection
+    selectedSeatIds.push(elementId);
+    selectedSeatsCount++;
+    setBackgroundById(elementId);
   }
 });
