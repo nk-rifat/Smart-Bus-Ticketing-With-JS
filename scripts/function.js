@@ -24,4 +24,12 @@ document.addEventListener("click", function (event) {
   const clickedElement = event.target.closest(".seat");
   if (!clickedElement) return;
 
+  const elementId = clickedElement.id;
+
+  if (seatIds.includes(elementId) && !selectedSeatIds.includes(elementId)) {
+    if (selectedSeatsCount >= MAX_SEATS) {
+      alert("Maximum 4 seats allowed");
+      return;
+    }
+  }
 });
