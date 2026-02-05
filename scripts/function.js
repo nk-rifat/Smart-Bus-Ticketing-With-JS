@@ -36,5 +36,10 @@ document.addEventListener("click", function (event) {
     selectedSeatIds.push(elementId);
     selectedSeatsCount++;
     setBackgroundById(elementId);
+
+    // Update UI Counts
+    const available = getTextElementValueById("total-seat");
+    setTextElementValueById("total-seat", available - 1);
+    setTextElementValueById("total-select", selectedSeatsCount);
   }
 });
