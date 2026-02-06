@@ -97,3 +97,10 @@ document.getElementById("phone-number").addEventListener("input", function (e) {
     btnNext.setAttribute("disabled", true);
   }
 });
+
+function scrollToSection(sectionId) {
+  const element = document.getElementById(sectionId);
+  if (element) {
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+}
