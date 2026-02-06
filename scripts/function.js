@@ -9,6 +9,7 @@ const labelContainer = document.getElementById("row-labels");
 const leftSide = document.getElementById("col-1-2");
 const rightSide = document.getElementById("col-3-4");
 
+// make bus seat number with dom
 rows.forEach((row) => {
   labelContainer.innerHTML += `<div class="flex items-center justify-center font-bold h-[58px]">${row}</div>`;
   for (let i = 1; i <= 4; i++) {
@@ -20,7 +21,7 @@ rows.forEach((row) => {
   }
 });
 
-//  Handle Selection
+//  Handle Selection of seat
 document.addEventListener("click", function (event) {
   const clickedElement = event.target.closest(".seat");
   if (!clickedElement) return;
@@ -74,6 +75,7 @@ document.getElementById("btn-apply").addEventListener("click", function () {
   const currentTotal = selectedSeatsCount * TICKET_PRICE;
   let discount = 0;
 
+  // coupon condition
   if (couponInput === "NEW15") {
     discount = (currentTotal * 15) / 100;
   } else if (couponInput === "Couple 20") {
@@ -98,9 +100,18 @@ document.getElementById("phone-number").addEventListener("input", function (e) {
   }
 });
 
+// btn click and scroll to the bus seat selection section
 function scrollToSection(sectionId) {
   const element = document.getElementById(sectionId);
   if (element) {
     element.scrollIntoView({ behavior: "smooth" });
   }
 }
+
+// show the success message
+document.getElementById("btn-enabled").addEventListener("click", function () {
+  hideElementById("header-section");
+  hideElementById("main-section");
+
+  showElementById("success-section");
+});
