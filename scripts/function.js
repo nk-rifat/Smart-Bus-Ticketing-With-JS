@@ -21,6 +21,19 @@ rows.forEach((row) => {
   }
 });
 
+// --- Validation Logic ---
+function updateNextButtonState() {
+  const phoneInput = document.getElementById("phone-number").value;
+  const btnNext = document.getElementById("btn-enabled");
+
+  // Enable button only if at least 1 seat is selected AND phone number is entered
+  if (selectedSeatsCount > 0 && phoneInput.length > 0) {
+    btnNext.removeAttribute("disabled");
+  } else {
+    btnNext.setAttribute("disabled", true);
+  }
+}
+
 //  Handle Selection of seat
 document.addEventListener("click", function (event) {
   const clickedElement = event.target.closest(".seat");
@@ -38,6 +51,7 @@ document.addEventListener("click", function (event) {
     selectedSeatIds.push(elementId);
     selectedSeatsCount++;
     setBackgroundById(elementId);
+    updateNextButtonState();
 
     // Update UI Counts
     const available = getTextElementValueById("total-seat");
@@ -88,16 +102,6 @@ document.getElementById("btn-apply").addEventListener("click", function () {
   setTextElementValueById("discount", discount);
   setTextElementValueById("grand-total", currentTotal - discount);
   hideCopuponBox();
-});
-
-// Form Validation & Next Screen
-document.getElementById("phone-number").addEventListener("input", function (e) {
-  const btnNext = document.getElementById("btn-enabled");
-  if (e.target.value.length > 0 && selectedSeatsCount > 0) {
-    btnNext.removeAttribute("disabled");
-  } else {
-    btnNext.setAttribute("disabled", true);
-  }
 });
 
 // btn click and scroll to the bus seat selection section
