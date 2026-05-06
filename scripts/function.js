@@ -23,11 +23,10 @@ rows.forEach((row) => {
 
 // --- Validation Logic ---
 function updateNextButtonState() {
-  const phoneInput = document.getElementById("phone-number").value;
+  const phoneNumber = document.getElementById("phone-number").value;
   const btnNext = document.getElementById("btn-enabled");
 
-  // Enable button only if at least 1 seat is selected AND phone number is entered
-  if (selectedSeatsCount > 0 && phoneInput.length > 0) {
+  if (selectedSeatsCount > 0 && phoneNumber.trim().length > 0) {
     btnNext.removeAttribute("disabled");
   } else {
     btnNext.setAttribute("disabled", true);
@@ -50,8 +49,8 @@ document.addEventListener("click", function (event) {
     // Add to Selection
     selectedSeatIds.push(elementId);
     selectedSeatsCount++;
-    setBackgroundById(elementId);
     updateNextButtonState();
+    setBackgroundById(elementId);
 
     // Update UI Counts
     const available = getTextElementValueById("total-seat");
@@ -102,6 +101,10 @@ document.getElementById("btn-apply").addEventListener("click", function () {
   setTextElementValueById("discount", discount);
   setTextElementValueById("grand-total", currentTotal - discount);
   hideCopuponBox();
+});
+
+document.getElementById("phone-number").addEventListener("input", function () {
+  updateNextButtonState();
 });
 
 // btn click and scroll to the bus seat selection section
